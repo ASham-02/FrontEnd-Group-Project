@@ -1,71 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Character Creator</title>
-  <link rel="stylesheet" href="stylesheet.css" />
-</head>
-<body>
-  <main class="app">
-    <header class="app__header">
-      <h1>Character Creator</h1>
-      <p>Create your character and save them as a card.</p>
-    </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./stylesheet.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Register form -->
+        <div class="register-container">
+            <h1 class="form-title">Register</h1>
+            <button class="form-btn" id="loginBtn">Login</button>
+            <form id="registerForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" />
+                <span class="error-message" id="usernameError"></span>
+                <label for="email">Email</label>
+                <input type="text" id="email" />
+                <span class="error-message" id="emailError"></span>
+                <label for="password">Password</label>
+                <input type="password" id="password" />
+                <span class="error-message" id="passwordError"></span>
+                <input type="submit" value="Submit" />
+            </form>
+            <span class="successful-register" id="successfulRegister"></span>
+        </div>
+        <!-- end of register form -->
 
-    <section class="creator">
-      <form class="creator__form" id="characterForm">
-        <h2>Create Character</h2>
+        <!-- Login form -->
+        <div class="login-container">
+            <h1 class="form-title">Login</h1>
+            <button class="form-btn" id="registerBtn">Register</button>
+            <form id="loginForm">
+                <label for="loginUsername">Username</label>
+                <input type="text" id="loginUsername" />
+                <span class="error-message" id="loginUsernameError"></span>
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" />
+                <span class="error-message" id="loginPasswordError"></span>
+                <input type="submit" value="Submit" />
+                <span class="login-message" id="loginMessage"></span>
+            </form>
+        </div>
+        <!-- end of login form -->
 
-        <label>
-          Name
-          <input type="text" id="nameInput" placeholder="Enter name" required />
-        </label>
+        <div class="dashboard-container">
+            <div class="dashboard-title">
+                Welcome <span class="dashboard-username">User123</span>
+            </div>
+            <div class="logoutContainer">
+                <button class="logout" id="logoutBtn">Log Out</button>
+            </div>
+        </div>
 
-        <label>
-          Age
-          <input type="number" id="ageInput" placeholder="Enter age" required />
-        </label>
-
-        <label>
-          Height
-          <input type="number" id="heightInput" placeholder="Enter height" required />
-        </label>
-
-        <label>
-          Weight
-          <input type="number" id="weightInput" placeholder="Enter weight" required />
-        </label>
-
-        <label>
-          Artwork URL
-          <input type="text" id="artworkInput" placeholder="Paste image URL" />
-        </label>
-
-        <label>
-          Element
-          <select id="elementSelect" required>
-             <option value="">Choose an element</option>
-          </select>
-        </label>
-
-        <label>
-          Class
-          <select id="classSelect" required>
-            <option value="">Choose a class</option>
-          </select>
-        </label>
-
-        <button type="submit">Generate Character</button>
-      </form>
-    </section>
-
-    <section class="cards">
-      <h2>Saved Characters</h2>
-      <div class="cards__grid" id="characterCards"></div>
-    </section>
-  </main>
-
-  <script type="module" src="main.js"></script>
-</body>
+        <script src="./userScript.js" defer></script>
+    </body>
 </html>
