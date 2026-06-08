@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.register-container, .login-container{
+    width: 95%;
+    margin: 10px auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: relative;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.register-container{
+    display: block;
+}
+
+.login-container{
+    display: none;
+}
+
+.dashboard-container{
+    display: none;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.logoutContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.logout{
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px 5px;
+    width: 90%;
+}
+
+.form-title{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.form-btn{
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.error-message{
+    font-size: 10px;
+    color: red;
+    text-align: end;
+}
+
+.successful-register, .loggin-message{
+    font-size: 10px;
+    text-align: center;
+}
+.successful-register{
+    display: block;
+    margin: 10px 0;
+}
+
+form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+@media (min-width: 600px)  {
+    .register-container, .login-container{
+        width: 300px;
+    }
+
+    form {
+        width: 100%;
+        padding: 0 10px;
+        justify-self: center;
+    }
+}
+
+@media (min-width: 400px)  {
+    .dashboard-container{
+        position: relative; 
+    }
+
+    .logout{
+        width: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
