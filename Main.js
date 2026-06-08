@@ -1,5 +1,5 @@
 const API_URL = "http://localhost:8080";
-const USER_ID = 1; // temporary until login is connected
+const USER_ID = 1; // temporary until login is connected 
 
 const form = document.querySelector("#characterForm");
 
