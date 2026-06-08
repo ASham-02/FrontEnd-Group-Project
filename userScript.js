@@ -1,38 +1,25 @@
-const loginBtn = document.querySelector('#loginBtn');
-const registerBtn = document.querySelector('#registerBtn');
-const logoutBtn = document.querySelector('#logoutBtn');
 const registerContainer = document.querySelector('.register-container');
 const loginContainer = document.querySelector('.login-container');
 const dashboardContainer = document.querySelector('.dashboard-container');
-const dashboardUsername = document.querySelector('.dashboard-username');
-const registerForm = document.querySelector('#registerForm');
-const loginForm = document.querySelector('#loginForm');
-const logginMessage = document.querySelector('#logginMessage');
-const usernameInput = document.querySelector('#username');
-const emailInput = document.querySelector('#email');
-const passwordInput = document.querySelector('#password');
-const logginUsernameInput = document.querySelector('#logginUsername');
-const logginPasswordInput = document.querySelector('#logginPassword');
-const successfulRegister = document.querySelector('#successfulRegister');
-const usernameError = document.querySelector('#usernameError');
-const logginUsernameError = document.querySelector('#logginUsernameError');
-const logginPasswordError = document.querySelector('#logginPasswordError');
-const emailError = document.querySelector('#emailError');
-const passwordError = document.querySelector('#passwordError');
 
-loginBtn.addEventListener('click', () => {
+const loginBtn = document.querySelector('#loginBtn').addEventListener('click', () => {
     registerContainer.style.display = 'none';
     loginContainer.style.display = 'block';
 })
 
-registerBtn.addEventListener('click', () => {
+const registerBtn = document.querySelector('#registerBtn').addEventListener('click', () => {
     registerContainer.style.display = 'block';
     loginContainer.style.display = 'none';
 })
 
-registerForm.addEventListener("submit", async (e) => {
+const registerForm = document.querySelector('#registerForm').addEventListener("submit", async (e) => {
     e.preventDefault();
+    const usernameInput = document.querySelector('#username');
+    const emailInput = document.querySelector('#email');
+    const passwordInput = document.querySelector('#password');
+    const successfulRegister = document.querySelector('#successfulRegister');
 
+    
     const usernameVlaue = usernameInput.value;
     const emailVlaue = emailInput.value;
     const passwordVlaue = passwordInput.value;
@@ -72,63 +59,73 @@ registerForm.addEventListener("submit", async (e) => {
         successfulRegister.style.color = "red"
         successfulRegister.innerText = "An error occurred while registering."
     }
-
-
-    // const usernameVlaue = usernameInput.value;
-    // const emailVlaue = emailInput.value;
-    // const passwordVlaue = passwordInput.value;
-
-    // successfulRegister.style.color = "green"
-    // successfulRegister.innerText = "You have successfully register. Now try logging in."
-    
-    // console.log(`User successfully registered:
-    // {
-    //     username: "${usernameVlaue}",
-    //     email: "${emailVlaue}",
-    //     password: "${passwordVlaue}"
-    //     }`
-    // );
-
 })
 
-loginForm.addEventListener('submit', (e) => {
+const loginForm = document.querySelector('#loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    const logginUsernameInput = document.querySelector('#logginUsername');
+    const logginPasswordInput = document.querySelector('#logginPassword');
+    const dashboardUsername = document.querySelector('.dashboard-username');
+    const logginUsernameError = document.querySelector('#logginUsernameError');
+    const logginPasswordError = document.querySelector('#logginPasswordError');
+    const logginMessage = document.querySelector('#logginMessage');
     const usernameVlaue = logginUsernameInput.value;
     const passwordVlaue = logginPasswordInput.value;
 
-    // temporary value
-    const username = "user123";
-    const password = "123";
 
-    if (!loginValidateForm(usernameVlaue, passwordVlaue, username, password)) {
+     if (usernameVlaue.trim() == '') {
+        logginUsernameError.innerText = "Username required"
         return
+    } else if (passwordVlaue.trim() == '') {
+        logginPasswordError.innerText = "Password required"
+        return
+    } 
+
+   try {
+        const res = await fetch("http://localhost:8080/api/user/login", {
+            method: 'POST',
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                username: usernameVlaue,
+                password: passwordVlaue
+            })
+        });
+
+        const data = await res.json();
+        console.log(data);
+        
+        if (res.ok) {
+            console.log(data);
+            logginMessage.style.color = 'green'
+            logginMessage.innerText = `${data.message}`
+            loginContainer.style.display = 'none';
+            dashboardContainer.style.display = 'block';
+            dashboardUsername.innerText = usernameVlaue.substring(0, 1).toUpperCase() + usernameVlaue.substring(1);
+        } else {
+            logginMessage.style.color = 'red'
+            logginMessage.innerText = `${data.message}`
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Server error");
     }
-
-
-    console.log(`logged-in successfully :
-    {
-        username: "${usernameVlaue}",
-        password: "${passwordVlaue}"
-    }`
-    );
-
-    console.log('Successfully Logged In');
-    loginContainer.style.display = 'none';
-    dashboardContainer.style.display = 'block';
-    dashboardUsername.innerText = usernameVlaue
 })
 
-logoutBtn.addEventListener('click', (e) => {
+const logoutBtn = document.querySelector('#logoutBtn').addEventListener('click', (e) => {
     dashboardContainer.style.display = 'none';
     registerContainer.style.display = 'block';
 
     location.reload()
 })
 
-
 const registerValidateForm = (usernameVlaue, emailVlaue, passwordVlaue) => {
     let isValid = true;
+    const usernameError = document.querySelector('#usernameError');
+    const emailError = document.querySelector('#emailError');
+    const passwordError = document.querySelector('#passwordError');
 
     if (usernameVlaue.trim() == '') {
         usernameError.innerText = 'Username is required';
@@ -166,48 +163,7 @@ const registerValidateForm = (usernameVlaue, emailVlaue, passwordVlaue) => {
     return isValid
 }
 
-const loginValidateForm = (usernameVlaue, passwordVlaue, username, password) => {
-    isValid = true;
-    
-    if (usernameVlaue.trim() == '') {
-        logginUsernameError.innerText = "Username required"
-        isValid = false
-    } else if (passwordVlaue.trim() == '') {
-        logginPasswordError.innerText = "Password required"
-        isValid = false
-    } else if (username !== usernameVlaue && password !== passwordVlaue) {
-        logginMessage.style.color = 'red'
-        logginMessage.innerText = "Username or Password is incorrect"
-        isValid = false
-    } else {
-        logginMessage.style.color = 'green'
-        logginMessage.innerText = "You have successfully logged in"
-    }
-
-    return isValid
-}
-
 const validateEmail = (emailVlaue) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(emailVlaue)
 }
-
-const getData = async () => {
-    const url = "http://localhost:8080/api/user/3";
-
-    try {
-        const res = await fetch(url) 
-        
-        if (!res.ok) {
-            throw new Error(`Responce status: ${res.status}`);
-        }
-        const result = await res.json();
-        console.log(result);
-        console.log(result.username);
-        console.log(result.password);
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-
-// getData()
