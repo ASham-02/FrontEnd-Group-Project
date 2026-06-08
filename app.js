@@ -1,5 +1,5 @@
 // Load classes from Spring Boot API
-fetch("http://localhost:8080/api/classes")
+fetch("http://127.0.0.1:8080/api/classes")
   .then((response) => response.json())
   .then((data) => {
     const classSelect = document.getElementById("class");
@@ -13,7 +13,7 @@ fetch("http://localhost:8080/api/classes")
   .catch((error) => console.error("Could not load classes:", error));
 
 // Load elements from Spring Boot API
-fetch("http://localhost:8080/api/elements")
+fetch("http://127.0.0.1:8080/api/elements")
   .then((response) => response.json())
   .then((data) => {
     const elementSelect = document.getElementById("element");
@@ -27,7 +27,7 @@ fetch("http://localhost:8080/api/elements")
   .catch((error) => console.error("Could not load elements:", error));
 
 // Load stats from Spring Boot API
-fetch("http://localhost:8080/api/stats")
+fetch("http://127.0.0.1:8080/api/stats")
   .then((response) => response.json())
   .then((data) => {
     window.statsData = data;
@@ -59,78 +59,78 @@ function validate() {
   const name = document.getElementById("name").value.trim();
   const nameError = document.getElementById("name-error");
   if (name.length < 2 || name.length > 100) {
-    nameError.classList.add("show");
-    document.getElementById("name").classList.add("invalid");
+    nameError.style.display = "block";
+    document.getElementById("name").style.borderColor = "red";
     valid = false;
   } else {
-    nameError.classList.remove("show");
-    document.getElementById("name").classList.remove("invalid");
+    nameError.style.display = "none";
+    document.getElementById("name").style.borderColor = "";
   }
 
   // Age
   const age = document.getElementById("age").value.trim();
   const ageError = document.getElementById("age-error");
   if (age === "" || parseInt(age) < 1 || parseInt(age) > 999) {
-    ageError.classList.add("show");
-    document.getElementById("age").classList.add("invalid");
+    ageError.style.display = "block";
+    document.getElementById("age").style.borderColor = "red";
     valid = false;
   } else {
-    ageError.classList.remove("show");
-    document.getElementById("age").classList.remove("invalid");
+    ageError.style.display = "none";
+    document.getElementById("age").style.borderColor = "";
   }
 
   // Height
   const height = document.getElementById("height").value.trim();
   const heightError = document.getElementById("height-error");
   if (height === "" || parseInt(height) < 1 || parseInt(height) > 300) {
-    heightError.classList.add("show");
-    document.getElementById("height").classList.add("invalid");
+    heightError.style.display = "block";
+    document.getElementById("height").style.borderColor = "red";
     valid = false;
   } else {
-    heightError.classList.remove("show");
-    document.getElementById("height").classList.remove("invalid");
+    heightError.style.display = "none";
+    document.getElementById("height").style.borderColor = "";
   }
 
   // Weight
   const weight = document.getElementById("weight").value.trim();
   const weightError = document.getElementById("weight-error");
   if (weight === "" || parseInt(weight) < 1 || parseInt(weight) > 500) {
-    weightError.classList.add("show");
-    document.getElementById("weight").classList.add("invalid");
+    weightError.style.display = "block";
+    document.getElementById("weight").style.borderColor = "red";
     valid = false;
   } else {
-    weightError.classList.remove("show");
-    document.getElementById("weight").classList.remove("invalid");
+    weightError.style.display = "none";
+    document.getElementById("weight").style.borderColor = "";
   }
 
   // Class
   const charClass = document.getElementById("class").value;
   const classError = document.getElementById("class-error");
   if (charClass === "") {
-    classError.classList.add("show");
-    document.getElementById("class").classList.add("invalid");
+    classError.style.display = "block";
+    document.getElementById("class").style.borderColor = "red";
     valid = false;
   } else {
-    classError.classList.remove("show");
-    document.getElementById("class").classList.remove("invalid");
+    classError.style.display = "none";
+    document.getElementById("class").style.borderColor = "";
   }
 
   // Element
   const element = document.getElementById("element").value;
   const elementError = document.getElementById("element-error");
   if (element === "") {
-    elementError.classList.add("show");
-    document.getElementById("element").classList.add("invalid");
+    elementError.style.display = "block";
+    document.getElementById("element").style.borderColor = "red";
     valid = false;
   } else {
-    elementError.classList.remove("show");
-    document.getElementById("element").classList.remove("invalid");
+    elementError.style.display = "none";
+    document.getElementById("element").style.borderColor = "";
   }
 
   return valid;
 }
 
-// Generate button — saves to Spring Boot and reveals card
+// Generate button
 document.getElementById("generate-btn").addEventListener("click", function () {
   if (validate()) {
     const character = {
@@ -143,7 +143,7 @@ document.getElementById("generate-btn").addEventListener("click", function () {
       elementId: parseInt(document.getElementById("element").value),
     };
 
-    fetch("http://localhost:8080/api/characters", {
+    fetch("http://127.0.0.1:8080/api/characters", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(character),
@@ -186,7 +186,7 @@ document.getElementById("generate-btn").addEventListener("click", function () {
   }
 });
 
-// Delete button — clears everything
+// Delete button
 document.getElementById("delete-btn").addEventListener("click", function () {
   document.getElementById("name").value = "";
   document.getElementById("age").value = "";
@@ -197,10 +197,14 @@ document.getElementById("delete-btn").addEventListener("click", function () {
   document.getElementById("artwork").value = "";
   document.getElementById("card-section").style.display = "none";
 
-  document
-    .querySelectorAll(".error-message")
-    .forEach((e) => e.classList.remove("show"));
-  document
-    .querySelectorAll(".invalid")
-    .forEach((e) => e.classList.remove("invalid"));
+  document.querySelectorAll(".error-message").forEach(function (e) {
+    e.style.display = "none";
+  });
+
+  document.getElementById("name").style.borderColor = "";
+  document.getElementById("age").style.borderColor = "";
+  document.getElementById("height").style.borderColor = "";
+  document.getElementById("weight").style.borderColor = "";
+  document.getElementById("class").style.borderColor = "";
+  document.getElementById("element").style.borderColor = "";
 });
