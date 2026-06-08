@@ -103,4 +103,47 @@ const getData = async () => {
     }
 }
 
-getData();
+// getData();
+
+// backup cards 
+const fetchCharacters = async() => {
+  try {
+    const res =  await fetch(`http://localhost:8080/api/user/${USER_ID}`)
+    const data = await res.json()
+    console.log(data);
+    renderCharacters(data.characters)
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const renderCharacters = (characters) => {
+  const cardContainer = document.querySelector('#tempCardContainer');
+
+  cardContainer.innerHTML = '';
+
+  characters.forEach((character) => {
+    const card = document.createElement('div');
+    card.classList.add('temp-card');
+
+    card.innerHTML = `
+      <img
+              width="100%"
+              src="${character.artwork}"
+              alt="${character.name}"
+            />
+            <div class="card-content">
+              <h2>${character.name}</h2>
+              <p><strong>Age:</strong> ${character.age}</p>
+              <p><strong>Weight:</strong> ${character.weight}</p>
+              <p><strong>Height:</strong> ${character.height}</p>
+              <p><strong>Element:</strong> ${character.element.element}</p>
+              <p><strong>Class:</strong> ${character.characterClass.name}</p>
+            </div>
+    `;
+
+    cardContainer.appendChild(card);
+  });
+};
+
+fetchCharacters()
