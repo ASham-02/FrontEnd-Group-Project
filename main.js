@@ -1,5 +1,5 @@
 const API_URL = "http://localhost:8080";
-const USER_ID = 1; // temporary until login is connected
+const USER_ID = 1; // temporary until login is connected 
 
 const form = document.querySelector("#characterForm");
 
@@ -21,6 +21,20 @@ const loadElements = async () => {
     option.value = element.id;
     option.textContent = `${element.element} - ${element.nation}`;
     elementSelect.appendChild(option);
+  });
+};
+
+const loadCharacterClasses = async () => {
+  const response = await fetch("http://localhost:8080/api/characterClass");
+  const characterClasses = await response.json();
+
+  characterClasses.forEach((characterClass) => {
+    const option = document.createElement("option");
+
+    option.value = characterClass.id;
+    option.textContent = characterClass.name;
+
+    classSelect.appendChild(option);
   });
 };
 
@@ -65,4 +79,6 @@ const createCharacter = async (event) => {
 };
 
 loadElements();
+loadCharacterClasses();
+
 form.addEventListener("submit", createCharacter);
