@@ -240,3 +240,48 @@ button {
     flex-direction: column;
   }
 }
+
+
+/* Character Display */
+.character_user {
+    margin-left: 85%;
+    margin-right: 5px;
+    margin-top: 10px;
+
+}
+.menuContainer{
+    margin-top: 5px;
+    align-self: center;
+}
+#character_menuButton {
+    background-color: wheat;
+    padding: 3px;
+    border-radius: 10px;
+}
+.character_box {
+    border: solid black; 
+    margin: 20px 0px;
+    text-align: center;
+}
+
+#name_box, #image_box, #age_box, #height_box, #weight_box, #class_box, #stats_box, #element_box {
+    border: solid 1px wheat;
+    justify-content: center;
+    margin: 5px 100px;
+    padding: 10px 0px;
+}
+#character_name, #character_age, #character_height, #character_weight, #character_class, #character_stats, #character_element,
+#character_stats-strength, #character_stats-dexterity, #character_stats-intelligence, #character_stats-constitution, #character_stats-wisdom, #character_stats-charisma
+{
+  margin: 10px;
+}
+
+#character_artwork {
+    width: 250px;
+    height: 250px;
+}
+
+#character_line{
+  width: 100px;
+  margin: auto;
+}

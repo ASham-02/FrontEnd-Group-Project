@@ -3,125 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DnD Character Creator</title>
-    <link rel="stylesheet" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="./css/userStyle.css" />
+    <title>Document</title>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <h1 class="nav-title">DnD Character Creator</h1>
-    </nav>
+    <!-- Register form -->
+    <div class="register-container">
+      <h1 class="form-title">Register</h1>
+      <button class="form-btn" id="loginBtn">Login</button>
+      <form id="registerForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" />
+        <span class="error-message" id="usernameError"></span>
+        <label for="email">Email</label>
+        <input type="text" id="email" />
+        <span class="error-message" id="emailError"></span>
+        <label for="password">Password</label>
+        <input type="password" id="password" />
+        <span class="error-message" id="passwordError"></span>
+        <input type="submit" value="Submit" />
+      </form>
+      <span class="successful-register" id="successfulRegister"></span>
+    </div>
+    <!-- end of register form -->
 
-    <!-- Main Container -->
-    <div class="container">
-      <!-- Form Section -->
-      <div class="form-card">
-        <h2 class="section-title">Create Your Character</h2>
+    <!-- Login form -->
+    <div class="login-container">
+      <h1 class="form-title">Login</h1>
+      <button class="form-btn" id="registerBtn">Register</button>
+      <form id="loginForm">
+        <label for="logginUsername">Username</label>
+        <input type="text" id="logginUsername" />
+        <span class="error-message" id="logginUsernameError"></span>
+        <label for="logginPassword">Password</label>
+        <input type="password" id="logginPassword" />
+        <span class="error-message" id="logginPasswordError"></span>
+        <input type="submit" value="Submit" />
+        <span class="loggin-message" id="logginMessage"></span>
+      </form>
+    </div>
+    <!-- End of login form -->
 
-        <div class="form-group">
-          <label for="name">Character Name</label>
-          <input type="text" id="name" placeholder="Enter name" />
-          <span class="error-message" id="name-error"
-            >Name must be between 2 and 100 characters</span
-          >
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="age">Age</label>
-            <input type="number" id="age" placeholder="Enter age" />
-            <span class="error-message" id="age-error"
-              >Age must be between 1 and 999</span
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="height">Height (cm)</label>
-            <input type="number" id="height" placeholder="Enter height" />
-            <span class="error-message" id="height-error"
-              >Height must be between 1 and 300</span
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="weight">Weight (kg)</label>
-            <input type="number" id="weight" placeholder="Enter weight" />
-            <span class="error-message" id="weight-error"
-              >Weight must be between 1 and 500</span
-            >
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="class">Class</label>
-            <select id="class">
-              <option value="">Select Class...</option>
-              <option value="1">Warrior</option>
-              <option value="2">Mage</option>
-              <option value="3">Rogue</option>
-              <option value="4">Ranger</option>
-              <option value="5">Paladin</option>
-              <option value="6">Bard</option>
-              <option value="7">Monk</option>
-              <option value="8">Druid</option>
-            </select>
-            <span class="error-message" id="class-error"
-              >Please select a class</span
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="element">Element</label>
-            <select id="element">
-              <option value="">Select Element...</option>
-              <option value="1">Fire</option>
-              <option value="2">Water</option>
-              <option value="3">Earth</option>
-              <option value="4">Wind</option>
-              <option value="5">Lightning</option>
-              <option value="6">Shadow</option>
-              <option value="7">Light</option>
-              <option value="8">Ice</option>
-            </select>
-            <span class="error-message" id="element-error"
-              >Please select an element</span
-            >
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="artwork">Artwork URL</label>
-          <input type="url" id="artwork" placeholder="Paste image URL" />
-          <span class="error-message" id="artwork-error"
-            >Please enter a valid URL starting with http</span
-          >
-        </div>
-
-        <!-- Buttons -->
-        <div class="button-group">
-          <button id="generate-btn">Generate</button>
-          <button id="delete-btn">Delete</button>
-        </div>
+    <!-- Start of dashboard -->
+    <div class="dashboard-container">
+      <div class="dashboard-title">
+        Welcome <span class="dashboard-username"></span>
       </div>
-
-      <!-- Character Card Section -->
-      <div id="card-section" style="display: none">
-        <h2 class="section-title">Your Character</h2>
-        <div id="character-card">
-          <img id="card-artwork" src="" alt="Character Artwork" />
-          <div class="card-details">
-            <h3 id="card-name"></h3>
-            <p id="card-age"></p>
-            <p id="card-height"></p>
-            <p id="card-weight"></p>
-            <p id="card-class"></p>
-            <p id="card-element"></p>
-          </div>
-        </div>
+      <div class="logoutContainer">
+        <button class="logout" id="logoutBtn">Log Out</button>
       </div>
     </div>
+    <!-- End of dashboard -->
 
+<<<<<<< HEAD
     <script src="app.js"></script>
+=======
+    <script src="./userScript.js" defer></script>
+>>>>>>> origin/main
   </body>
 </html>
