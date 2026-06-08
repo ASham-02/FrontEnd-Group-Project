@@ -23,6 +23,7 @@ body {
   border-radius: 14px;
   padding: 2rem;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  position: relative;
 }
 
 .login-container,
@@ -73,6 +74,14 @@ input[type="submit"],
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.form-btn,
+.logout {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.5rem;
 }
 
 input[type="submit"]:hover,

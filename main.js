@@ -77,6 +77,11 @@ const createCharacter = async (event) => {
   // For now, redirect after saving:
   window.location.href = "cards.html";
 };
+// logout btn
+const logoutBtn = document.querySelector('#logoutBtn').addEventListener('click', () => {
+  window.location.href = "index.html";
+})
+
 
 loadElements();
 loadCharacterClasses();
