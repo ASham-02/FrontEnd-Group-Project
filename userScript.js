@@ -7,16 +7,16 @@ const dashboardContainer = document.querySelector('.dashboard-container');
 const dashboardUsername = document.querySelector('.dashboard-username');
 const registerForm = document.querySelector('#registerForm');
 const loginForm = document.querySelector('#loginForm');
-const logginMessage = document.querySelector('#logginMessage');
+const loginMessage = document.querySelector('#loginMessage');
 const usernameInput = document.querySelector('#username');
 const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
-const logginUsernameInput = document.querySelector('#logginUsername');
-const logginPasswordInput = document.querySelector('#logginPassword');
+const loginUsernameInput = document.querySelector('#loginUsername');
+const loginPasswordInput = document.querySelector('#loginPassword');
 const successfulRegister = document.querySelector('#successfulRegister');
 const usernameError = document.querySelector('#usernameError');
-const logginUsernameError = document.querySelector('#logginUsernameError');
-const logginPasswordError = document.querySelector('#logginPasswordError');
+const loginUsernameError = document.querySelector('#loginUsernameError');
+const loginPasswordError = document.querySelector('#loginPasswordError');
 const emailError = document.querySelector('#emailError');
 const passwordError = document.querySelector('#passwordError');
 
@@ -32,12 +32,12 @@ registerBtn.addEventListener('click', () => {
 
 registerForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const usernameVlaue = usernameInput.value;
-    const emailVlaue = emailInput.value;
-    const passwordVlaue = passwordInput.value;
+    const usernameValue = usernameInput.value;
+    const emailValue = emailInput.value;
+    const passwordValue = passwordInput.value;
 
-    if (!registerValidateForm(usernameVlaue, emailVlaue, passwordVlaue)) {
-        return
+    if (!registerValidateForm(usernameValue, emailValue, passwordValue)) {
+        return;
     }
 
     successfulRegister.style.color = "green"
@@ -45,40 +45,38 @@ registerForm.addEventListener("submit", (e) => {
     
     console.log(`User successfully registered:
     {
-        username: "${usernameVlaue}",
-        email: "${emailVlaue}",
-        password: "${passwordVlaue}"
-        }`
-    );
+        username: "${usernameValue}",
+        email: "${emailValue}",
+        password: "${passwordValue}"
+        }`);
 
 })
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    const usernameVlaue = logginUsernameInput.value;
-    const passwordVlaue = logginPasswordInput.value;
+    const usernameValue = loginUsernameInput.value;
+    const passwordValue = loginPasswordInput.value;
 
     // temporary value
     const username = "user123";
     const password = "123";
 
-    if (!loginValidateForm(usernameVlaue, passwordVlaue, username, password)) {
-        return
+    if (!loginValidateForm(usernameValue, passwordValue, username, password)) {
+        return;
     }
 
 
     console.log(`logged-in successfully :
     {
-        username: "${usernameVlaue}",
-        password: "${passwordVlaue}"
-    }`
-    );
+        username: "${usernameValue}",
+        password: "${passwordValue}"
+    }`);
 
     console.log('Successfully Logged In');
     loginContainer.style.display = 'none';
     dashboardContainer.style.display = 'block';
-    dashboardUsername.innerText = usernameVlaue
+    dashboardUsername.innerText = usernameValue;
 })
 
 logoutBtn.addEventListener('click', (e) => {
@@ -89,72 +87,79 @@ logoutBtn.addEventListener('click', (e) => {
 })
 
 
-const registerValidateForm = (usernameVlaue, emailVlaue, passwordVlaue) => {
+const registerValidateForm = (usernameValue, emailValue, passwordValue) => {
     let isValid = true;
 
-    if (usernameVlaue.trim() == '') {
-        usernameError.innerText = 'Username is required';
+    if (usernameValue.trim() == "") {
+        usernameError.innerText = "Username is required";
         isValid = false;
-    } else if (usernameVlaue.length <= 1) {
-        usernameError.innerText = 'Username needs to be more than one character long';
+    } else if (usernameValue.length <= 1) {
+        usernameError.innerText =
+            "Username needs to be more than one character long";
         isValid = false;
     } else {
-        usernameError.style.color = 'green'
-        usernameError.innerHTML = 'Valid Username'
+        usernameError.style.color = "green";
+        usernameError.innerHTML = "Valid Username";
     }
 
-    if (emailVlaue.trim() == '') {
-        emailError.innerText = 'Email is required';
+    if (emailValue.trim() == "") {
+        emailError.innerText = "Email is required";
         isValid = false;
-    } else if (!validateEmail(emailVlaue)) {
-        emailError.innerText = 'Invalid email address';
-        isValid = false
-    } else {
-        emailError.style.color = 'green'
-        emailError.innerHTML = 'Valid email address'
-    }
-
-    if (passwordVlaue.trim() == '') {
-        passwordError.innerText = 'Password is required';
+    } else if (!validateEmail(emailValue)) {
+        emailError.innerText = "Invalid email address";
         isValid = false;
-    } else if (passwordVlaue.length < 3) {
-        passwordError.innerText = 'Password must be at least 3 characters';
-        isValid = false
     } else {
-        passwordError.style.color = 'green'
-        passwordError.innerHTML = 'Valid password'
+        emailError.style.color = "green";
+        emailError.innerHTML = "Valid email address";
     }
 
-    return isValid
-}
+    if (passwordValue.trim() == "") {
+        passwordError.innerText = "Password is required";
+        isValid = false;
+    } else if (passwordValue.length < 3) {
+        passwordError.innerText = "Password must be at least 3 characters";
+        isValid = false;
+    } else {
+        passwordError.style.color = "green";
+        passwordError.innerHTML = "Valid password";
+    }
 
-const loginValidateForm = (usernameVlaue, passwordVlaue, username, password) => {
+    return isValid;
+};
+
+const loginValidateForm = (
+    usernameValue,
+    passwordValue,
+    username,
+    password,
+) => {
     isValid = true;
-    
-    if (usernameVlaue.trim() == '') {
-        logginUsernameError.innerText = "Username required"
-        isValid = false
-    } else if (passwordVlaue.trim() == '') {
-        logginPasswordError.innerText = "Password required"
-        isValid = false
-    } else if (username !== usernameVlaue && password !== passwordVlaue) {
-        logginMessage.style.color = 'red'
-        logginMessage.innerText = "Username or Password is incorrect"
-        isValid = false
+
+    if (usernameValue.trim() == "") {
+        loginUsernameError.innerText = "Username required";
+        isValid = false;
+    } else if (passwordValue.trim() == "") {
+        loginPasswordError.innerText = "Password required";
+        isValid = false;
+    } else if (username !== usernameValue && password !== passwordValue) {
+        loginMessage.style.color = "red";
+        loginMessage.innerText = "Username or Password is incorrect";
+        isValid = false;
     } else {
-        logginMessage.style.color = 'green'
-        logginMessage.innerText = "You have successfully logged in"
+        loginMessage.style.color = "green";
+        loginMessage.innerText = "You have successfully logged in";
     }
 
-    return isValid
-}
+    return isValid;
+};
 
-const validateEmail = (emailVlaue) => {
+const validateEmail = (emailValue) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(emailVlaue)
-}
+    return emailPattern.test(emailValue);
+};
 
 const getData = async () => {
+    //double check the URL as it is only grabbing from user with ID 1 currently
     const url = "http://localhost:8080/api/user/1";
 
     try {
