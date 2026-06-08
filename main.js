@@ -1,5 +1,5 @@
 const API_URL = "http://localhost:8080";
-const userId = localStorage.getItem("userId"); 
+const USER_ID = localStorage.getItem("userId");
 
 const form = document.querySelector("#characterForm");
 
@@ -57,7 +57,7 @@ const createCharacter = async (event) => {
     },
   };
 
-  const response = await fetch(`${API_URL}/api/characters/${userId}`, {
+  const response = await fetch(`http://localhost:8080/api/characters/${USER_ID}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -86,7 +86,7 @@ form.addEventListener("submit", createCharacter);
 
 const getData = async () => {
     try {
-        const res = await fetch(`http://localhost:8080/api/user/${userId}`) 
+        const res = await fetch(`http://localhost:8080/api/user/${USER_ID}`) 
         if (!res.ok) {
             throw new Error(`Responce status: ${res.status}`);
         }
