@@ -82,3 +82,20 @@ loadElements();
 loadCharacterClasses();
 
 form.addEventListener("submit", createCharacter);
+
+
+const getData = async () => {
+    try {
+        const res = await fetch(`http://localhost:8080/api/user/${USER_ID}`) 
+        if (!res.ok) {
+            throw new Error(`Responce status: ${res.status}`);
+        }
+        const result = await res.json();
+        console.log(result);
+    } catch (error) {
+      console.log(error);
+      
+    }
+}
+
+getData();

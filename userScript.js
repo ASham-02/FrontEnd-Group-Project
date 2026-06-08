@@ -104,6 +104,7 @@ const loginForm = document
                 body: JSON.stringify({
                     username: usernameVlaue,
                     password: passwordVlaue,
+                    // userId: 
                 }),
             });
 
@@ -115,7 +116,10 @@ const loginForm = document
                 logginMessage.style.color = 'green';
                 logginMessage.innerText = `${data.message}`;
 
+                localStorage.setItem("userId", data.userID);
+
                 window.location.href = 'character-creator.html'
+
 
             } else {
                 logginMessage.style.color = 'red';
