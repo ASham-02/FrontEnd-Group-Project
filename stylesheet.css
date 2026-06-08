@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -11,7 +11,7 @@ body {
     rgba(0, 0, 0, 0.15)
   );
   color: #f2e7c9;
-}
+} */
 
 .app {
   width: 90%;
@@ -106,39 +106,6 @@ button:hover {
 .cards h2 {
   text-align: center;
   color: #d4af37;
-}
-
-.cards__grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.character-card {
-  background: #f4e7c3;
-  color: #2b2119;
-  border: 3px solid #8b6b2e;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-}
-
-.character-card img {
-  width: 100%;
-  max-height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid #8b6b2e;
-  margin-bottom: 1rem;
-}
-
-.character-card h3 {
-  color: #7b1e1e;
-  margin-top: 0;
-}
-
-.character-card p {
-  margin: 0.5rem 0;
 }
 
 @media (min-width: 768px) {

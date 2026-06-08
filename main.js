@@ -1,0 +1,68 @@
+const API_URL = "http://localhost:8080";
+const USER_ID = 1; // temporary until login is connected
+
+const form = document.querySelector("#characterForm");
+
+const nameInput = document.querySelector("#nameInput");
+const ageInput = document.querySelector("#ageInput");
+const heightInput = document.querySelector("#heightInput");
+const weightInput = document.querySelector("#weightInput");
+const artworkInput = document.querySelector("#artworkInput");
+
+const elementSelect = document.querySelector("#elementSelect");
+const classSelect = document.querySelector("#classSelect");
+
+const loadElements = async () => {
+  const response = await fetch("http://localhost:8080/api/elements");
+  const elements = await response.json();
+
+  elements.forEach((element) => {
+    const option = document.createElement("option");
+    option.value = element.id;
+    option.textContent = `${element.element} - ${element.nation}`;
+    elementSelect.appendChild(option);
+  });
+};
+
+const createCharacter = async (event) => {
+  event.preventDefault();
+
+  const newCharacter = {
+    name: nameInput.value,
+    age: Number(ageInput.value),
+    height: Number(heightInput.value),
+    weight: Number(weightInput.value),
+    artwork: artworkInput.value,
+
+    element: {
+      id: Number(elementSelect.value),
+    },
+
+    characterClass: {
+      id: Number(classSelect.value),
+    },
+  };
+
+  const response = await fetch(`${API_URL}/api/characters/${USER_ID}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newCharacter),
+  });
+
+  if (!response.ok) {
+    console.error("Failed to create character");
+    return;
+  }
+
+  const savedCharacter = await response.json();
+  console.log("Saved character:", savedCharacter);
+
+  // Later this can go to your card page
+  // For now, redirect after saving:
+  window.location.href = "cards.html";
+};
+
+loadElements();
+form.addEventListener("submit", createCharacter);
