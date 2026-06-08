@@ -1,5 +1,5 @@
 const API_URL = "http://localhost:8080";
-const USER_ID = 1; // temporary until login is connected 
+const USER_ID = localStorage.getItem("userId");
 
 const form = document.querySelector("#characterForm");
 
@@ -57,7 +57,7 @@ const createCharacter = async (event) => {
     },
   };
 
-  const response = await fetch(`${API_URL}/api/characters/${USER_ID}`, {
+  const response = await fetch(`http://localhost:8080/api/characters/${USER_ID}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
