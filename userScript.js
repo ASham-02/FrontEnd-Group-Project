@@ -104,6 +104,7 @@ const loginForm = document
                 body: JSON.stringify({
                     username: usernameVlaue,
                     password: passwordVlaue,
+                    // userId: 
                 }),
             });
 
@@ -114,11 +115,12 @@ const loginForm = document
                 console.log(data);
                 logginMessage.style.color = 'green';
                 logginMessage.innerText = `${data.message}`;
-                loginContainer.style.display = 'none';
-                dashboardContainer.style.display = 'block';
-                dashboardUsername.innerText =
-                    usernameVlaue.substring(0, 1).toUpperCase() +
-                    usernameVlaue.substring(1);
+
+                localStorage.setItem("userId", data.userID);
+
+                window.location.href = 'character-creator.html'
+
+
             } else {
                 logginMessage.style.color = 'red';
                 logginMessage.innerText = `${data.message}`;

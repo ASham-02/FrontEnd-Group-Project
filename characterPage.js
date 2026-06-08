@@ -1,3 +1,5 @@
+
+//Query Selectors and Variables
 const characterName = document.querySelector("#character_name");
 const characterImage = document.querySelector("#character_artwork");
 const characterAge = document.querySelector("#character_age");
@@ -17,15 +19,31 @@ const characterConstitution = document.querySelector(
 const characterWisdom = document.querySelector("#character_stats-wisdom");
 const characterCharisma = document.querySelector("#character_stats-charisma");
 
-const exampleFunction = () => {
-    characterName.innerHTML = "Conan";
-    characterImage.src =
-        "https://www.filmlinc.org/cdn-cgi/image/width=1200%2Cformat=auto%2Cquality=85/https://wp.filmlinc.org/wp-content/uploads/2019/07/MakeMyDay_Conan_01-1.jpg";
-    characterAge.innerHTML = 94;
-    characterHeight.innerHTML = 188 + "cm";
-    characterWeight.innerHTML = 97 + "cm";
-    characterClass.innerHTML = "Barbarian";
-    characterElement.innerHTML = "Fire";
+// NEED TO FIND A WAY TO GRAB CHARACTER ID OF NEW CHARACTER
+const characterID = window.location.search;
+async function getCharacter() {
+
+    try {
+        const res = await fetch(`http://localhost:8080/api/characters/${characterID}`);
+        if (!res.ok) { throw new Error(`Response Status: ${response.status}`)}
+        const data = await res.json();
+        console.log(data);
+        makeCharacter(data);
+    } catch (error){
+        console.error(error.message);
+    }
+}
+
+
+
+const makeCharacter = (character) => {
+    characterName.innerHTML = character.name;
+    characterImage.src = `${character.url}`;
+    characterAge.innerHTML = character.age;
+    characterHeight.innerHTML = character.height + "cm";
+    characterWeight.innerHTML = character.weight + "kg";
+    characterClass.innerHTML = character.characterClass;
+    characterElement.innerHTML = character.Element;
 
     characterStrength.innerHTML = "Strength: " + 9;
     characterDexterity.innerHTML = "Dexterity: " + 8;
@@ -35,4 +53,4 @@ const exampleFunction = () => {
     characterCharisma.innerHTML = "Charisma: " + 6;
 };
 
-exampleFunction();
+getCharacter();
