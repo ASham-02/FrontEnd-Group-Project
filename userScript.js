@@ -30,26 +30,64 @@ registerBtn.addEventListener('click', () => {
     loginContainer.style.display = 'none';
 })
 
-registerForm.addEventListener("submit", (e) => {
+registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const usernameVlaue = usernameInput.value;
     const emailVlaue = emailInput.value;
     const passwordVlaue = passwordInput.value;
-
+    
     if (!registerValidateForm(usernameVlaue, emailVlaue, passwordVlaue)) {
         return
     }
 
-    successfulRegister.style.color = "green"
-    successfulRegister.innerText = "You have successfully register. Now try logging in."
+    try {
+        const res = await fetch("http://localhost:8080/api/user/register", {
+            method: 'POST',
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                username: usernameVlaue,
+                email: emailVlaue,
+                password: passwordVlaue
+            })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            successfulRegister.style.color = "green"
+            successfulRegister.innerText = "You have successfully register. Now try logging in."
+            console.log(data);
+        } else {
+            successfulRegister.style.color = "red"
+            successfulRegister.innerText = "Registeration Failed"
+
+            console.log(data.message);
+            
+        }
+    } catch (error) {
+        console.error(error);
+        successfulRegister.style.color = "red"
+        successfulRegister.innerText = "An error occurred while registering."
+    }
+
+
+    // const usernameVlaue = usernameInput.value;
+    // const emailVlaue = emailInput.value;
+    // const passwordVlaue = passwordInput.value;
+
+    // successfulRegister.style.color = "green"
+    // successfulRegister.innerText = "You have successfully register. Now try logging in."
     
-    console.log(`User successfully registered:
-    {
-        username: "${usernameVlaue}",
-        email: "${emailVlaue}",
-        password: "${passwordVlaue}"
-        }`
-    );
+    // console.log(`User successfully registered:
+    // {
+    //     username: "${usernameVlaue}",
+    //     email: "${emailVlaue}",
+    //     password: "${passwordVlaue}"
+    //     }`
+    // );
 
 })
 
@@ -82,10 +120,10 @@ loginForm.addEventListener('submit', (e) => {
 })
 
 logoutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-
     dashboardContainer.style.display = 'none';
     registerContainer.style.display = 'block';
+
+    location.reload()
 })
 
 
@@ -155,7 +193,7 @@ const validateEmail = (emailVlaue) => {
 }
 
 const getData = async () => {
-    const url = "http://localhost:8080/api/user/1";
+    const url = "http://localhost:8080/api/user/3";
 
     try {
         const res = await fetch(url) 
@@ -173,5 +211,3 @@ const getData = async () => {
 }
 
 // getData()
-
-
