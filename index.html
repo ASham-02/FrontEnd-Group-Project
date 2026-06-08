@@ -4,136 +4,123 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DnD Character Creator</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
   </head>
   <body>
-    <nav>
-      <h1>DnD Character Creator</h1>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <h1 class="nav-title">DnD Character Creator</h1>
     </nav>
 
-    <main>
-      <section id="form-section">
-        <h2>Create Your Character</h2>
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Form Section -->
+      <div class="form-card">
+        <h2 class="section-title">Create Your Character</h2>
 
         <div class="form-group">
           <label for="name">Character Name</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Enter name"
-            required
-            minlength="2"
-            maxlength="100"
-          />
-          <span class="error-message"
+          <input type="text" id="name" placeholder="Enter name" />
+          <span class="error-message" id="name-error"
             >Name must be between 2 and 100 characters</span
           >
         </div>
 
-        <div class="form-group">
-          <label for="age">Age</label>
-          <input
-            type="number"
-            id="age"
-            placeholder="Enter age"
-            required
-            min="1"
-            max="999"
-          />
-          <span class="error-message">Age must be between 1 and 999</span>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="Enter age" />
+            <span class="error-message" id="age-error"
+              >Age must be between 1 and 999</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" placeholder="Enter height" />
+            <span class="error-message" id="height-error"
+              >Height must be between 1 and 300</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="Enter weight" />
+            <span class="error-message" id="weight-error"
+              >Weight must be between 1 and 500</span
+            >
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="height">Height (cm)</label>
-          <input
-            type="number"
-            id="height"
-            placeholder="Enter height"
-            required
-            min="1"
-            max="300"
-          />
-          <span class="error-message">Height must be between 1 and 300</span>
-        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="class">Class</label>
+            <select id="class">
+              <option value="">Select Class...</option>
+              <option value="1">Warrior</option>
+              <option value="2">Mage</option>
+              <option value="3">Rogue</option>
+              <option value="4">Ranger</option>
+              <option value="5">Paladin</option>
+              <option value="6">Bard</option>
+              <option value="7">Monk</option>
+              <option value="8">Druid</option>
+            </select>
+            <span class="error-message" id="class-error"
+              >Please select a class</span
+            >
+          </div>
 
-        <div class="form-group">
-          <label for="weight">Weight (kg)</label>
-          <input
-            type="number"
-            id="weight"
-            placeholder="Enter weight"
-            required
-            min="1"
-            max="500"
-          />
-          <span class="error-message">Weight must be between 1 and 500</span>
-        </div>
-
-        <div class="form-group">
-          <label for="class">Class</label>
-          <select id="class" required>
-            <option value="">Select Class...</option>
-            <option value="1">Warrior</option>
-            <option value="2">Mage</option>
-            <option value="3">Rogue</option>
-            <option value="4">Ranger</option>
-            <option value="5">Paladin</option>
-            <option value="6">Bard</option>
-            <option value="7">Monk</option>
-            <option value="8">Druid</option>
-          </select>
-          <span class="error-message">Please select a class</span>
-        </div>
-
-        <div class="form-group">
-          <label for="element">Element</label>
-          <select id="element" required>
-            <option value="">Select Element...</option>
-            <option value="1">Fire</option>
-            <option value="2">Water</option>
-            <option value="3">Earth</option>
-            <option value="4">Wind</option>
-            <option value="5">Lightning</option>
-            <option value="6">Shadow</option>
-            <option value="7">Light</option>
-            <option value="8">Ice</option>
-          </select>
-          <span class="error-message">Please select an element</span>
+          <div class="form-group">
+            <label for="element">Element</label>
+            <select id="element">
+              <option value="">Select Element...</option>
+              <option value="1">Fire</option>
+              <option value="2">Water</option>
+              <option value="3">Earth</option>
+              <option value="4">Wind</option>
+              <option value="5">Lightning</option>
+              <option value="6">Shadow</option>
+              <option value="7">Light</option>
+              <option value="8">Ice</option>
+            </select>
+            <span class="error-message" id="element-error"
+              >Please select an element</span
+            >
+          </div>
         </div>
 
         <div class="form-group">
           <label for="artwork">Artwork URL</label>
-          <input
-            type="url"
-            id="artwork"
-            placeholder="Paste image URL"
-            pattern="https?://.+"
-          />
-          <span class="error-message">Please enter a valid URL</span>
+          <input type="url" id="artwork" placeholder="Paste image URL" />
+          <span class="error-message" id="artwork-error"
+            >Please enter a valid URL starting with http</span
+          >
         </div>
 
         <!-- Buttons -->
         <div class="button-group">
-          <button id="generate-btn" type="submit">Generate</button>
-          <button id="delete-btn" type="reset">Delete</button>
+          <button id="generate-btn">Generate</button>
+          <button id="delete-btn">Delete</button>
         </div>
-      </section>
+      </div>
 
       <!-- Character Card Section -->
-      <section id="card-section" style="display: none">
-        <h2>Your Character</h2>
-
+      <div id="card-section" style="display: none">
+        <h2 class="section-title">Your Character</h2>
         <div id="character-card">
           <img id="card-artwork" src="" alt="Character Artwork" />
-          <h3 id="card-name"></h3>
-          <p id="card-age"></p>
-          <p id="card-height"></p>
-          <p id="card-weight"></p>
-          <p id="card-class"></p>
-          <p id="card-element"></p>
+          <div class="card-details">
+            <h3 id="card-name"></h3>
+            <p id="card-age"></p>
+            <p id="card-height"></p>
+            <p id="card-weight"></p>
+            <p id="card-class"></p>
+            <p id="card-element"></p>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
 
     <script src="js/app.js"></script>
   </body>
