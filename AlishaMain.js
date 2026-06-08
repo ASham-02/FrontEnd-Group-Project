@@ -24,6 +24,20 @@ const loadElements = async () => {
   });
 };
 
+const loadCharacterClasses = async () => {
+  const response = await fetch("http://localhost:8080/api/characterClass");
+  const characterClasses = await response.json();
+
+  characterClasses.forEach((characterClass) => {
+    const option = document.createElement("option");
+
+    option.value = characterClass.id;
+    option.textContent = characterClass.name;
+
+    classSelect.appendChild(option);
+  });
+};
+
 const createCharacter = async (event) => {
   event.preventDefault();
 
@@ -65,4 +79,6 @@ const createCharacter = async (event) => {
 };
 
 loadElements();
+loadCharacterClasses();
+
 form.addEventListener("submit", createCharacter);
