@@ -88,7 +88,7 @@ const getData = async () => {
     try {
         const res = await fetch(`http://localhost:8080/api/user/${USER_ID}`) 
         if (!res.ok) {
-            throw new Error(`Responce status: ${res.status}`);
+            throw new Error(`Response status: ${res.status}`);
         }
         const result = await res.json();
         console.log(result);
