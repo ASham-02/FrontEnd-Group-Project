@@ -1,60 +1,60 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./stylesheet.css" />
-        <title>Document</title>
-    </head>
-    <body>
-        <!-- Register form -->
-        <div class="register-container">
-            <h1 class="form-title">Register</h1>
-            <button class="form-btn" id="loginBtn">Login</button>
-            <form id="registerForm">
-                <label for="username">Username</label>
-                <input type="text" id="username" />
-                <span class="error-message" id="usernameError"></span>
-                <label for="email">Email</label>
-                <input type="text" id="email" />
-                <span class="error-message" id="emailError"></span>
-                <label for="password">Password</label>
-                <input type="password" id="password" />
-                <span class="error-message" id="passwordError"></span>
-                <input type="submit" value="Submit" />
-            </form>
-            <span class="successful-register" id="successfulRegister"></span>
-        </div>
-        <!-- end of register form -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/userStyle.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Register form -->
+    <div class="register-container">
+      <h1 class="form-title">Register</h1>
+      <button class="form-btn" id="loginBtn">Login</button>
+      <form id="registerForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" />
+        <span class="error-message" id="usernameError"></span>
+        <label for="email">Email</label>
+        <input type="text" id="email" />
+        <span class="error-message" id="emailError"></span>
+        <label for="password">Password</label>
+        <input type="password" id="password" />
+        <span class="error-message" id="passwordError"></span>
+        <input type="submit" value="Submit" />
+      </form>
+      <span class="successful-register" id="successfulRegister"></span>
+    </div>
+    <!-- end of register form -->
 
-        <!-- Login form -->
-        <div class="login-container">
-            <h1 class="form-title">Login</h1>
-            <button class="form-btn" id="registerBtn">Register</button>
-            <form id="loginForm">
-                <label for="logginUsername">Username</label>
-                <input type="text" id="logginUsername" />
-                <span class="error-message" id="logginUsernameError"></span>
-                <label for="logginPassword">Password</label>
-                <input type="password" id="logginPassword" />
-                <span class="error-message" id="logginPasswordError"></span>
-                <input type="submit" value="Submit" />
-                <span class="loggin-message" id="logginMessage"></span>
-            </form>
-        </div>
-        <!-- End of login form -->
+    <!-- Login form -->
+    <div class="login-container">
+      <h1 class="form-title">Login</h1>
+      <button class="form-btn" id="registerBtn">Register</button>
+      <form id="loginForm">
+        <label for="logginUsername">Username</label>
+        <input type="text" id="logginUsername" />
+        <span class="error-message" id="logginUsernameError"></span>
+        <label for="logginPassword">Password</label>
+        <input type="password" id="logginPassword" />
+        <span class="error-message" id="logginPasswordError"></span>
+        <input type="submit" value="Submit" />
+        <span class="loggin-message" id="logginMessage"></span>
+      </form>
+    </div>
+    <!-- End of login form -->
 
-        <!-- Start of dashboard -->
-        <div class="dashboard-container">
-            <div class="dashboard-title">
-                Welcome <span class="dashboard-username"></span>
-            </div>
-            <div class="logoutContainer">
-                <button class="logout" id="logoutBtn">Log Out</button>
-            </div>
-        </div>
-        <!-- End of dashboard -->
+    <!-- Start of dashboard -->
+    <div class="dashboard-container">
+      <div class="dashboard-title">
+        Welcome <span class="dashboard-username"></span>
+      </div>
+      <div class="logoutContainer">
+        <button class="logout" id="logoutBtn">Log Out</button>
+      </div>
+    </div>
+    <!-- End of dashboard -->
 
-        <script src="./userScript.js" defer></script>
-    </body>
+    <script src="./userScript.js" defer></script>
+  </body>
 </html>
