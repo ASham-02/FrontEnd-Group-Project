@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Character Creator</title>
+        <link rel="stylesheet" href="stylesheet.css" />
+    </head>
+    <body>
+        <main class="app">
+            <header class="app__header">
+                <h1>Character Creator</h1>
+                <p>Create your character and save them as a card.</p>
+            </header>
+
+            <section class="creator">
+                <form class="creator__form" id="characterForm">
+                    <h2>Create Character</h2>
+
+                    <label>
+                        Name
+                        <input
+                            type="text"
+                            id="nameInput"
+                            placeholder="Enter name"
+                            required
+                        />
+                    </label>
+
+                    <label>
+                        Age
+                        <input
+                            type="number"
+                            id="ageInput"
+                            placeholder="Enter age"
+                            required
+                        />
+                    </label>
+
+                    <label>
+                        Height
+                        <input
+                            type="number"
+                            id="heightInput"
+                            placeholder="Enter height"
+                            required
+                        />
+                    </label>
+
+                    <label>
+                        Weight
+                        <input
+                            type="number"
+                            id="weightInput"
+                            placeholder="Enter weight"
+                            required
+                        />
+                    </label>
+
+                    <label>
+                        Artwork URL
+                        <input
+                            type="text"
+                            id="artworkInput"
+                            placeholder="Paste image URL"
+                        />
+                    </label>
+
+                    <label>
+                        Element
+                        <select id="elementSelect" required>
+                            <option value="">Choose an element</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Class
+                        <select id="classSelect" required>
+                            <option value="">Choose a class</option>
+                        </select>
+                    </label>
+
+                    <button type="submit">Generate Character</button>
+                </form>
+            </section>
+
+            <section class="cards">
+                <h2>Saved Characters</h2>
+                <div class="cards__grid" id="characterCards"></div>
+            </section>
+        </main>
+
+        <script type="module" src="main.js"></script>
+    </body>
+</html>
