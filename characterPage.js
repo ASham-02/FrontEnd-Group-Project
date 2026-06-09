@@ -23,7 +23,6 @@ const characterCharisma = document.querySelector('#character_stats-charisma');
 
 const charId = window.sessionStorage.getItem('characterId');
 async function getCharacter() {
-    console.log(charId);
     try {
         const res = await fetch(
             `http://localhost:8080/api/characters/${charId}`,
@@ -41,19 +40,19 @@ async function getCharacter() {
 
 const makeCharacter = (character) => {
     characterName.innerHTML = character.name;
-    characterImage.src = `${character.url}`;
+    characterImage.src = character.artwork;
     characterAge.innerHTML = character.age;
     characterHeight.innerHTML = character.height + 'cm';
     characterWeight.innerHTML = character.weight + 'kg';
-    characterClass.innerHTML = character.characterClass;
-    characterElement.innerHTML = character.Element;
+    characterClass.innerHTML = character.characterClass.name;
+    characterElement.innerHTML = character.element.element;
 
-    characterStrength.innerHTML = 'Strength: ' + 9;
-    characterDexterity.innerHTML = 'Dexterity: ' + 8;
-    characterIntelligence.innerHTML = 'Intelligence: ' + 1;
-    characterConstitution.innerHTML = 'Constitution: ' + 1;
-    characterWisdom.innerHTML = 'Wisdom: ' + 5;
-    characterCharisma.innerHTML = 'Charisma: ' + 6;
+    characterStrength.innerHTML = "Strength: " + character.stat.strength;
+    characterDexterity.innerHTML = 'Dexterity: ' + character.stat.dexterity;
+    characterIntelligence.innerHTML = 'Intelligence: ' + character.stat.intelligence;
+    characterConstitution.innerHTML = 'Constitution: ' + character.stat.constitution;
+    characterWisdom.innerHTML = 'Wisdom: ' + character.stat.wisdom;
+    characterCharisma.innerHTML = 'Charisma: ' + character.stat.charisma;
 };
 
 getCharacter();
