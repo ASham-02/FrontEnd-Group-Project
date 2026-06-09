@@ -76,9 +76,7 @@ const createCharacter = async (event) => {
     const savedCharacter = await response.json();
     console.log('Saved character:', savedCharacter);
 
-    // Later this can go to your card page
-    // For now, redirect after saving:
-    window.location.href = 'cards.html';
+    window.location.reload();;
 };
 // logout btn
 const logoutBtn = document
