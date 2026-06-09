@@ -91,6 +91,7 @@ form.addEventListener("submit", createCharacter);
 
 const getData = async () => {
     try {
+      console.log(USER_ID)
         const res = await fetch(`http://localhost:8080/api/user/${USER_ID}`) 
         if (!res.ok) {
             throw new Error(`Response status: ${res.status}`);
@@ -108,6 +109,7 @@ const getData = async () => {
 // backup cards 
 const fetchCharacters = async() => {
   try {
+    console.log(USER_ID)
     const res =  await fetch(`http://localhost:8080/api/user/${USER_ID}`)
     const data = await res.json()
     console.log(data);
