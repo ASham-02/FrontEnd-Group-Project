@@ -131,14 +131,6 @@ const loginForm = document
         }
     });
 
-const logoutBtn = document
-    .querySelector('#logoutBtn')
-    .addEventListener('click', (e) => {
-        dashboardContainer.style.display = 'none';
-        registerContainer.style.display = 'block';
-
-        location.reload();
-    });
 
 const registerValidateForm = (usernameValue, emailValue, passwordValue) => {
     let isValid = true;

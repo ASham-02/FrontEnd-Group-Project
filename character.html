@@ -1,80 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Description</title>
-    <link rel="stylesheet" href="css/stylesheet.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Character Description</title>
+        <link rel="stylesheet" href="css/stylesheet.css" />
+    </head>
 
-<body>
-    <div class="character_user">
-      <div class="character_title">
-        Welcome <span class="character_username">User123</span>
-      </div>
-      <div class="menuContainer">
-        <a id= "character_menuButton" href="index.html">Back to Menu</a>
-      </div>
-    </div>
-
-    <div class="character_box">
-        <div id="name_box">
-            <h2>Character Name:</h2>
-            <p id="character_name"></p>
-        </div>
-        
-        <div id="image_box" >
-            <img id="character_artwork" src="" alt="character's appearance"/>
+    <body>
+        <div class="character_user">
+            <div class="character_title">
+                Welcome <span class="character_username">User123</span>
+            </div>
+            <div class="menuContainer">
+                <a id="character_menuButton" href="index.html">Back to Menu</a>
+            </div>
         </div>
 
-        <div id="age_box">
-            <h2>Age:</h2>
-            <p id="character_age"></p>
+        <div class="character_box">
+            <div id="name_box">
+                <h2>Character Name:</h2>
+                <p id="character_name"></p>
+            </div>
+
+            <div id="image_box">
+                <img
+                    id="character_artwork"
+                    src=""
+                    alt="character's appearance"
+                />
+            </div>
+
+            <div id="age_box">
+                <h2>Age:</h2>
+                <p id="character_age"></p>
+            </div>
+
+            <div id="height_box">
+                <h2>Height:</h2>
+                <!-- JS will have to be character weight + "cm" -->
+                <p id="character_height"></p>
+            </div>
+
+            <div id="weight_box">
+                <h2>Weight:</h2>
+                <p id="character_weight"></p>
+            </div>
+
+            <div id="class_box">
+                <h2>Character's Class:</h2>
+                <p id="character_class"></p>
+            </div>
+
+            <div id="stats_box">
+                <h2>Stats:</h2>
+                <p id="character_stats-strength">Strength: 9</p>
+                <hr id="character_line" />
+                <p id="character_stats-dexterity">Dexterity: 8</p>
+                <hr id="character_line" />
+                <p id="character_stats-intelligence">Intelligence: 1</p>
+                <hr id="character_line" />
+                <p id="character_stats-constitution">Constitution: 1</p>
+                <hr id="character_line" />
+                <p id="character_stats-wisdom">Wisdom: 5</p>
+                <hr id="character_line" />
+                <p id="character_stats-charisma">Charisma: 6</p>
+            </div>
+
+            <div id="element_box">
+                <h2>Element:</h2>
+                <p id="character_element"></p>
+            </div>
         </div>
 
-        <div id="height_box">
-            <h2>Height:</h2>
-            <!-- JS will have to be character weight + "cm" -->
-            <p id="character_height"></p>
-        </div>
-
-        <div id="weight_box">
-            <h2>Weight:</h2>
-            <p id="character_weight"></p>
-        </div>
-
-        <div id="class_box">
-            <h2>Character's Class:</h2>
-            <p id="character_class"></p>
-        </div>
-
-        <div id="stats_box">
-            <h2>Stats:</h2>
-            <p id="character_stats-strength">Strength: 9</p>
-            <hr id="character_line">
-            <p id="character_stats-dexterity">Dexterity: 8</p>
-            <hr id="character_line">
-            <p id="character_stats-intelligence">Intelligence: 1</p>
-            <hr id="character_line">
-            <p id="character_stats-constitution">Constitution: 1</p>
-            <hr id="character_line">
-            <p id="character_stats-wisdom">Wisdom: 5</p>
-            <hr id="character_line">
-            <p id="character_stats-charisma">Charisma: 6</p>
-
-        </div>
-
-        <div id="element_box">
-            <h2>Element:</h2>
-            <p id="character_element"></p>
-        </div>
-    </div>
-
-
-
-
-
-<script src="JavaScript/characterPage.js"></script>
-</body>
+        <script src="./characterPage.js" type="module" />
+    </body>
 </html>
-

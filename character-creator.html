@@ -1,105 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Character Creator</title>
-    <link rel="stylesheet" href="stylesheet.css" />
-  </head>
-  <body>
-    <main class="app">
-      <header class="app__header">
-        <h1>Character Creator</h1>
-        <p>Create your character and save them as a card.</p>
-      </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Character Creator</title>
+        <link rel="stylesheet" href="css/creatorStyle.css" />
+    </head>
+    <body>
+        <main class="app">
+            <header class="app__header">
+                <h1>Character Creator</h1>
+                <p>Create your character and save them as a card.</p>
+            </header>
 
-      <section class="creator">
-        <form class="creator__form" id="characterForm">
-          <h2>Create Character</h2>
+            <button class="logout" id="logoutBtn">Log Out</button>
 
-          <label>
-            Name
-            <input
-              type="text"
-              id="nameInput"
-              placeholder="Enter name"
-              required
-            />
-          </label>
+            <section class="creator">
+                <form class="creator__form" id="characterForm">
+                    <h2>Create Character</h2>
 
-          <label>
-            Age (Years)
-            <output id="ageValue"></output>
-            <input
-              id="ageInput"
-              type="range"
-              min="0"
-              max="1000"
-              step="1"
-              required
-            />
-          </label>
+                    <label>
+                        Name
+                        <input
+                            type="text"
+                            id="nameInput"
+                            placeholder="Enter name"
+                            required
+                        />
+                    </label>
 
-          <label>
-            Height (cm)
-            <output id="heightValue"></output>
-            <input
-              id="heightInput"
-              type="range"
-              min="1"
-              max="200"
-              step="1"
-              required
-            />
-          </label>
+                    <label>
+                        Age (Years)
+                        <output id="ageValue"></output>
+                        <input
+                            id="ageInput"
+                            type="range"
+                            min="0"
+                            max="1000"
+                            step="1"
+                            required
+                        />
+                    </label>
 
-          <label>
-            Weight (KG)
-            <output id="weightValue"></output>
-            <input
-              id="weightInput"
-              type="range"
-              min="20"
-              max="500"
-              step="1"
-              required
-            />
-          </label>
+                    <label>
+                        Height (cm)
+                        <output id="heightValue"></output>
+                        <input
+                            id="heightInput"
+                            type="range"
+                            min="1"
+                            max="200"
+                            step="1"
+                            required
+                        />
+                    </label>
 
-          <label>
-            Artwork URL
-            <input
-              type="text"
-              id="artworkInput"
-              placeholder="Paste image URL"
-            />
-          </label>
+                    <label>
+                        Weight (KG)
+                        <output id="weightValue"></output>
+                        <input
+                            id="weightInput"
+                            type="range"
+                            min="20"
+                            max="500"
+                            step="1"
+                            required
+                        />
+                    </label>
 
-          <label>
-            Element
-            <select id="elementSelect" required>
-              <option value="">Choose an element</option>
-            </select>
-          </label>
+                    <label>
+                        Artwork URL
+                        <input
+                            type="text"
+                            id="artworkInput"
+                            placeholder="Paste image URL"
+                        />
+                    </label>
 
-          <label>
-            Class
-            <select id="classSelect" required>
-              <option value="">Choose a class</option>
-            </select>
-          </label>
-          <div id="statsContainer"></div>
-          <button type="submit">Generate Character</button>
-        </form>
-      </section>
+                    <label>
+                        Element
+                        <select id="elementSelect" required>
+                            <option value="">Choose an element</option>
+                        </select>
+                    </label>
 
-      <section class="cards">
-        <h2>Saved Characters</h2>
-        <div class="cards__grid" id="characterCards"></div>
-      </section>
-    </main>
+                    <label>
+                        Class
+                        <select id="classSelect" required>
+                            <option value="">Choose a class</option>
+                        </select>
+                    </label>
+                    <div id="statsContainer"></div>
+                    <button type="submit">Generate Character</button>
+                </form>
+            </section>
 
-    <script type="module" src="main.js"></script>
-    <script src="class-stats.js" defer></script>
-  </body>
+            <section class="cards">
+                <button id="savedCharactersBtn">View Saved Characters</button>
+            </section>
+
+            <section class="temp-card-section">
+                <div id="tempCardContainer" class="temp-card-container"></div>
+            </section>
+        </main>
+
+        <script type="module" src="main.js"></script>
+        <script src="class-stats.js" defer></script>
+    </body>
 </html>
