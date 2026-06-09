@@ -20,9 +20,9 @@ const characterWisdom = document.querySelector("#character_stats-wisdom");
 const characterCharisma = document.querySelector("#character_stats-charisma");
 
 // NEED TO FIND A WAY TO GRAB CHARACTER ID OF NEW CHARACTER
-const characterID = window.location.search;
-async function getCharacter() {
+const characterID = window.location.search.id;
 
+async function getCharacter() {
     try {
         const res = await fetch(`http://localhost:8080/api/characters/${characterID}`);
         if (!res.ok) { throw new Error(`Response Status: ${response.status}`)}
